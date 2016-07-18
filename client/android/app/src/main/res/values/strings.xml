@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MobileControlClient</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_connect">Connect</string>
+    <string name="action_disconnect">Disconnect</string>
+    <string name="action_send">Send</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="connecting">Connecting…</string>
+    <string name="disconnected">Disonnected!</string>
+
+</resources>
