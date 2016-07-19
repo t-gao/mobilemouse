@@ -3,21 +3,19 @@ package com.mobilecontrol.client;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mobilecontrol.client.data.TouchData;
 import com.mobilecontrol.client.net.MobileControlClient;
 import com.mobilecontrol.client.net.MobileControlClient.OnConnectListener;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     protected static final String TAG = "MainActivity";
 
@@ -49,10 +47,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RelativeLayout root = (RelativeLayout) LayoutInflater.from(
-                getApplicationContext()).inflate(R.layout.activity_main, null);
-        setContentView(root);
-        root.setOnTouchListener(new OnTouchListener() {
+        setContentView(R.layout.activity_main);
+
+        findViewById(R.id.btn_left).setOnClickListener(this);
+        findViewById(R.id.btn_right).setOnClickListener(this);
+
+        findViewById(R.id.touch_pad).setOnTouchListener(new OnTouchListener() {
 
             float lastX, lastY, downX, downY;
             long downTime;
@@ -91,8 +91,8 @@ public class MainActivity extends Activity {
                         Log.d(TAG, "tx " + tx);
                         td_c.setType(tx > mLongClickTime ? TouchData.TOUCH_TYPE_LONG_CLICK
                                 : TouchData.TOUCH_TYPE_CLICK);
-                        td_c.setX((int) x);
-                        td_c.setY((int) y);
+//                        td_c.setX((int) x);
+//                        td_c.setY((int) y);
                         send(td_c);
                     }
                     break;
@@ -177,5 +177,29 @@ public class MainActivity extends Activity {
         String jsonStr = sb.toString();
         Log.d(TAG, "send: " + jsonStr);
         mControlClient.send(jsonStr);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_left:
+                onLeftClicked();
+                break;
+            case R.id.btn_right:
+                onRightClicked();
+                break;
+        }
+    }
+
+    private void onRightClicked() {
+        TouchData td_c = new TouchData();
+        td_c.setType(TouchData.TOUCH_TYPE_LONG_CLICK);
+        send(td_c);
+    }
+
+    private void onLeftClicked() {
+        TouchData td_c = new TouchData();
+        td_c.setType(TouchData.TOUCH_TYPE_CLICK);
+        send(td_c);
     }
 }
