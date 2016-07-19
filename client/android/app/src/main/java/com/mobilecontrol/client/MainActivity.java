@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.mobilecontrol.client.data.TouchData;
 import com.mobilecontrol.client.net.MobileControlClient;
 import com.mobilecontrol.client.net.MobileControlClient.OnConnectListener;
@@ -167,7 +166,7 @@ public class MainActivity extends Activity {
     }
 
     private void send(TouchData td) {
-        if (td == null) {
+        if (td == null || !mControlClient.isConnected()) {
             return;
         }
         StringBuilder sb = new StringBuilder();

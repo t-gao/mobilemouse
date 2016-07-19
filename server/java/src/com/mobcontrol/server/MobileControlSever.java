@@ -109,14 +109,19 @@ public class MobileControlSever extends Thread {
             e1.printStackTrace();
         }
 
+        Socket server = null;
+        try {
+            server = mServerSocket.accept();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
         while (true) {
-            Socket server = null;
             DataInputStream in = null;
             try {
                 System.out.println("Waiting for client on port " + mServerSocket.getLocalPort() + "...");
                 // System.out.println("Server ip: "
                 // + mServerSocket.getInetAddress());
-                server = mServerSocket.accept();
                 System.out.println("Just connected to " + server.getRemoteSocketAddress());
                 in = new DataInputStream(server.getInputStream());
                 String inStr = in.readUTF();
@@ -155,7 +160,7 @@ public class MobileControlSever extends Thread {
                 } else if ("M".equals(type)) {
                     if (segLen > 3) {
                         String x = segs[2], y = segs[3];
-                        System.out.println("hanle move, x: " + x + ", y: " + y);
+                        System.out.println("handle move, x: " + x + ", y: " + y);
                         try {
                             int xInt = Integer.valueOf(x);
                             int yInt = Integer.valueOf(y);

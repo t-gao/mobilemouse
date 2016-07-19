@@ -149,14 +149,14 @@ public class MobileControlClient {
                 return;
             }
             try {
-//                if (mClientSoc == null) {
+                if (mClientSoc == null) {
                     connect(mServerIp, SERVER_TCP_PORT);
-//                }
+                }
 
-//                if (out == null) {
+                if (out == null) {
                     OutputStream outToServer = mClientSoc.getOutputStream();
                     out = new DataOutputStream(outToServer);
-//                }
+                }
 
                 out.writeUTF(/*"Content: " + */content/* + " from "
                         + mClientSoc.getLocalSocketAddress()*/);
@@ -167,7 +167,7 @@ public class MobileControlClient {
 //                out.close();
 //                mClientSoc.close();
             } catch (IOException e) {
-                Log.e(TAG, "exception on send: ", e);
+                Log.e(TAG, "exception on send (server disconnected): ", e);
                 disconnect();
             }
         }
