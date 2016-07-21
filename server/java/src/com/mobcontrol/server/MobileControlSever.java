@@ -22,10 +22,15 @@ import java.util.Enumeration;
 
 public class MobileControlSever extends Thread {
 
+    //TODO: connection status management
+
     private static final String MULTI_CAST_ADDR = "228.5.6.7";
     private static final int LOCAL_UDP_PORT = 30000;
     private static final int MCAST_CLIENT_PORT = 28960;
     private static final int LOCAL_TCP_PORT = 27015;// control data comes here
+
+    private static final int WAIT_FOR_WAVE_SO_TIMEOUT = 60 * 1000; // milliseconds
+    private static final int WAIT_FOR_WAVE_BUFFER_SIZE = 1024; // bytes
 
     private ServerSocket mServerSocket;
     private String mIpAddr;
@@ -51,6 +56,8 @@ public class MobileControlSever extends Thread {
                 mServerSocket.bind(new InetSocketAddress(mIpAddr, port));
             } catch (BindException e) {
                 e.printStackTrace();
+                // TODO: Address already in use, notify the user that there may
+                // be already an server instance running on this computer
             }
         }
         // try {
@@ -134,6 +141,7 @@ public class MobileControlSever extends Thread {
                 //client disconnected
                 e.printStackTrace();
                 System.out.println("client disconnected");
+                //TODO: alert the user
                 try {
                     in.close();
                     server.close();
@@ -203,22 +211,37 @@ public class MobileControlSever extends Thread {
         System.out.println("waitForClientWave " + addr + ", " + port);
         InetAddress group = InetAddress.getByName(addr);
         MulticastSocket s = new MulticastSocket(port);
-        byte[] arb = new byte[1024];
+        s.setSoTimeout(WAIT_FOR_WAVE_SO_TIMEOUT);
+        int bufferSize = WAIT_FOR_WAVE_BUFFER_SIZE;
+        byte[] arb = new byte[bufferSize];
         s.joinGroup(group);
         String res;
         while (true) {
-            DatagramPacket datagramPacket = new DatagramPacket(arb, arb.length);
-            s.receive(datagramPacket);
-            // System.out.println(arb.length);
-            res = new String(arb);
-            System.out.println("got client wave: " + res);
-            if (res.startsWith("hi_i_am_client")) {
-                String sendMessage = "hi_i_am_server";
-                sendMulticast(sendMessage, MULTI_CAST_ADDR, MCAST_CLIENT_PORT);
-                System.out.println("waitForClientWave, got client wave, waved back");
-                s.close();
-                return;
+            DatagramPacket datagramPacket = new DatagramPacket(arb, bufferSize);
+            try {
+                s.receive(datagramPacket);
+
+                // System.out.println(arb.length);
+                res = new String(arb);
+                System.out.println("got client wave: " + res);
+                if (res.startsWith("hi_i_am_client")) {
+                    String sendMessage = "hi_i_am_server";
+                    sendMulticast(sendMessage, MULTI_CAST_ADDR, MCAST_CLIENT_PORT);
+                    System.out.println("waitForClientWave, got client wave, waved back");
+                    s.close();
+                    return;
+                }
+            } catch (SocketTimeoutException e) {
+                System.out.println("waiting for client wave timed out");
+                //TODO: handle timeout: notify the user to start a new round of waiting
+                break;
+            } finally {
+                try {
+                    s.close();
+                } catch (Exception ignored) {
+                }
             }
+
         }
     }
 

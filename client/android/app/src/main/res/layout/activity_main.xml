@@ -14,39 +14,13 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/buttons">
 
-        <FrameLayout
+        <TextView
+            android:id="@+id/connection_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
-
-            <LinearLayout
-                android:id="@+id/connecting_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <ProgressBar
-                    style="@android:style/Widget.ProgressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/connecting" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/disconnected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/disconnected"
-                android:visibility="gone" />
-        </FrameLayout>
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="@string/disconnected" />
     </RelativeLayout>
 
     <LinearLayout

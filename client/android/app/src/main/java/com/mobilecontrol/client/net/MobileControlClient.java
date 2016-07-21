@@ -1,5 +1,12 @@
 package com.mobilecontrol.client.net;
 
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -7,16 +14,14 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
-
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.Log;
 
 public class MobileControlClient {
     private static final String TAG = "MobileControlClient";
+
+    private static final int WAIT_FOR_WAVE_SO_TIMEOUT = 2000; // milliseconds
+    private static final int WAIT_FOR_WAVE_BUFFER_SIZE = 1024; // bytes
 
     private static final String MULTI_CAST_ADDR = "228.5.6.7";
     private static final int SERVER_UDP_PORT = 30000;//multicast send to
@@ -27,78 +32,105 @@ public class MobileControlClient {
     private static final short CONNECTING = 1;
     private static final short CONNECTED = 2;
 
-    private NetworkThread mWorkingThread;
-    private Handler mWTHanlder;
+    private NetworkThread mNetworkThread;
+    private Handler mNetThreadHandler;
     private OnConnectListener mOnConnectListener;
-//    private boolean mConnected = false;
     private short mConnectionStatus = DISCONNECTED;
 
     public MobileControlClient() {
-        mWorkingThread = new NetworkThread("MobConClientNetThread");
-        mWorkingThread.start();
-        mWTHanlder = new Handler(mWorkingThread.getLooper()) {
+        init();
+    }
+
+    private void init() {
+        mNetworkThread = new NetworkThread("MobConClientNetThread");
+        mNetworkThread.start();
+        mNetThreadHandler = new Handler(mNetworkThread.getLooper()) {
 
             @Override
             public void handleMessage(Message msg) {
-                Log.d(TAG, "mWTHanlder handle msg: " + msg.what);
+                Log.d(TAG, "mNetThreadHandler handle msg: " + msg.what);
                 switch(msg.what) {
-                case NetworkThread.MSG_CONNECT:
-                    mWorkingThread.connect();
-                    break;
-                case NetworkThread.MSG_SEND:
-                    mWorkingThread.send((String)msg.obj);
-                    break;
-                default:
-                    break;
+                    case NetworkThread.MSG_FIND_SERVER:
+                        mNetworkThread.findServer();
+                        break;
+                    case NetworkThread.MSG_SEND:
+                        mNetworkThread.send((String)msg.obj);
+                        break;
+                    default:
+                        break;
                 }
             }
 
         };
+    }
 
-//        connect();
+    private void quitAndMarkDisconnected() {
+        try {
+            clearHandlerMsgs();
+            Looper looper = mNetThreadHandler.getLooper();
+            if (looper != null) {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+//                    looper.quitSafely();
+//                } else {
+                    looper.quit();
+//                }
+            }
+        } catch (Exception ignored) {
+        }
+
+        mNetworkThread = null;
+        mNetThreadHandler = null;
+        mConnectionStatus = DISCONNECTED;
     }
 
     private void clearHandlerMsgs() {
-        mWTHanlder.removeMessages(NetworkThread.MSG_CONNECT);
-        mWTHanlder.removeMessages(NetworkThread.MSG_SEND);
+        if (mNetThreadHandler != null) {
+            try {
+                mNetThreadHandler.removeCallbacksAndMessages(null);
+            } catch (Exception ignored) {
+            }
+        }
     }
 
     public void setOnConnectListener(OnConnectListener listener) {
         mOnConnectListener = listener;
     }
 
-    public void connect() {
-        Log.d(TAG, "connect");
-        clearHandlerMsgs();
-        mWTHanlder.sendEmptyMessage(NetworkThread.MSG_CONNECT);
+    public void findServer() {
+        Log.d(TAG, "findServer");
+        init();
+//        clearHandlerMsgs();
+        mNetThreadHandler.sendEmptyMessage(NetworkThread.MSG_FIND_SERVER);
     }
 
     public void disconnect() {
-        clearHandlerMsgs();
-        mWorkingThread.disconnect();
-//        mWorkingThread.quitSafely();
+        if (mConnectionStatus != DISCONNECTED && mNetworkThread != null) {
+            mNetworkThread.disconnect(false);
+        }
     }
 
     public void send(String content) {
         Log.d(TAG, "send: " + content);
-        clearHandlerMsgs();
-        mWTHanlder.sendMessage(Message.obtain(mWTHanlder,
-                NetworkThread.MSG_SEND, content));
+//        clearHandlerMsgs();
+        if (isConnected() && mNetThreadHandler != null) {
+            mNetThreadHandler.sendMessage(Message.obtain(mNetThreadHandler, NetworkThread.MSG_SEND, content));
+        }
     }
 
     public boolean isConnected() {
-        return mWorkingThread.isConnected();
+        return mConnectionStatus == CONNECTED && mNetworkThread != null && mNetworkThread.isConnected();
     }
 
     public interface OnConnectListener {
-        void onConnectStateChanged(boolean connected);
+        void onFindServerComplete(boolean found);
+        void onDisconnected(boolean disconnectedByServer);
     }
 
     public class NetworkThread extends HandlerThread {
 
         private static final String TAG = "NetworkThread";
 
-        public static final int MSG_CONNECT = 0;
+        public static final int MSG_FIND_SERVER = 0;
         public static final int MSG_SEND = 1;
 
         private Socket mClientSoc;
@@ -109,23 +141,26 @@ public class MobileControlClient {
             super(name);
         }
 
-        private void connect() {
+        private void findServer() {
             mConnectionStatus = CONNECTING;
             Log.d(TAG, "connect");
-            String res = null;
-//            do {
-                wave();
-                res = waitForWaveBack();
-//            } while (TextUtils.isEmpty(res));
+            String res;
+            wave();
+            res = waitForWaveBack();
 
-                if (!TextUtils.isEmpty(res)) {
-                    String serverIp = res.substring(res.indexOf("/") + 1);
-//                  connect(serverIp, SERVER_TCP_PORT);
-                    mServerIp = serverIp;
-//                    mConnected = true;
+            if (!TextUtils.isEmpty(res)) {
+                mServerIp = res.substring(res.indexOf("/") + 1);
+                boolean found = !TextUtils.isEmpty(mServerIp);
+                if (found) {
                     mConnectionStatus = CONNECTED;
-                    mOnConnectListener.onConnectStateChanged(!TextUtils.isEmpty(mServerIp));
+                } else {
+                    quitAndMarkDisconnected();
                 }
+                mOnConnectListener.onFindServerComplete(found);
+            } else {
+                quitAndMarkDisconnected();
+                mOnConnectListener.onFindServerComplete(false);
+            }
         }
 
         private void connect(String serverName, int port) {
@@ -133,8 +168,7 @@ public class MobileControlClient {
                 Log.d(TAG, "Connecting to server " + serverName + " on port " + port);
                 mClientSoc = new Socket(serverName, port);
                 mClientSoc.setKeepAlive(true);
-                Log.d(TAG,
-                        "Just connected to server " + mClientSoc.getRemoteSocketAddress());
+                Log.d(TAG, "Just connected to server " + mClientSoc.getRemoteSocketAddress());
             } catch (UnknownHostException e) {
                 Log.e(TAG, "xxxxxxxxxxxxxxxxx", e);
             } catch (IOException e) {
@@ -158,17 +192,11 @@ public class MobileControlClient {
                     out = new DataOutputStream(outToServer);
                 }
 
-                out.writeUTF(/*"Content: " + */content/* + " from "
-                        + mClientSoc.getLocalSocketAddress()*/);
+                out.writeUTF(content);
 
-//                InputStream inFromServer = mClientSoc.getInputStream();
-//                DataInputStream in = new DataInputStream(inFromServer);
-//                Log.d(TAG, "Server says " + in.readUTF());
-//                out.close();
-//                mClientSoc.close();
             } catch (IOException e) {
                 Log.e(TAG, "exception on send (server disconnected): ", e);
-                disconnect();
+                disconnect(true);
             }
         }
 
@@ -207,28 +235,41 @@ public class MobileControlClient {
             Log.d(TAG, "receiveMulticast");
             InetAddress group = InetAddress.getByName(addr);
             MulticastSocket s = new MulticastSocket(port);
-            byte[] arb = new byte[1024];
+            s.setSoTimeout(WAIT_FOR_WAVE_SO_TIMEOUT);
+            int bufferSize = WAIT_FOR_WAVE_BUFFER_SIZE;
+            byte[] arb = new byte[bufferSize];
             s.joinGroup(group);
             String res;
             while (mConnectionStatus == CONNECTING) {
-                DatagramPacket datagramPacket = new DatagramPacket(arb,
-                        arb.length);
+                DatagramPacket datagramPacket = new DatagramPacket(arb, bufferSize);
                 Log.d(TAG, "before receive");
-                s.receive(datagramPacket);
-                res = new String(arb);
-                Log.d(TAG, "after receive, res: " + res);
-                if (res.startsWith("hi_i_am_server")) {
-                    String ret = datagramPacket.getAddress().toString();
-                    Log.d(TAG, "server waved back, ip: " + ret);
-//                    String ret = s.getRemoteSocketAddress().toString();
-                    s.close();
-                    return ret;
+                try {
+                    s.receive(datagramPacket);
+
+                    res = new String(arb);
+                    Log.d(TAG, "after receive, res: " + res);
+                    if (res.startsWith("hi_i_am_server")) {
+                        String ret = datagramPacket.getAddress().toString();
+                        Log.d(TAG, "server waved back, ip: " + ret);
+                        s.close();
+                        return ret;
+                    }
+                } catch (SocketTimeoutException e) {
+                    Log.e(TAG, "waiting for server wave timed out", e);
+                    quitAndMarkDisconnected();
+                    mOnConnectListener.onFindServerComplete(false);
+                    break;
+                } finally {
+                    try {
+                        s.close();
+                    } catch (Exception ignored) {
+                    }
                 }
             }
             return null;
         }
 
-        public void disconnect() {
+        public void disconnect(boolean disconnectedByServer) {
             if (mClientSoc != null) {
                 try {
                     mClientSoc.shutdownOutput();
@@ -253,13 +294,12 @@ public class MobileControlClient {
                 }
             }
 
-//            mConnected = false;
-            mConnectionStatus = DISCONNECTED;
-            mOnConnectListener.onConnectStateChanged(false);
+            quitAndMarkDisconnected();
+            mOnConnectListener.onDisconnected(disconnectedByServer);
         }
 
         public boolean isConnected() {
-            return mConnectionStatus == CONNECTED && !TextUtils.isEmpty(mServerIp);
+            return !TextUtils.isEmpty(mServerIp);
         }
     }
 }

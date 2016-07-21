@@ -6,9 +6,11 @@
     <string name="action_connect">Connect</string>
     <string name="action_disconnect">Disconnect</string>
     <string name="action_send">Send</string>
-    <string name="hello_world">Hello world!</string>
 
     <string name="connecting">Connecting…</string>
-    <string name="disconnected">Disonnected!</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="disconnected_by_server">Server Disconnected</string>
+    <string name="connected">Connected</string>
+    <string name="server_not_found">Server Not Found!</string>
 
 </resources>

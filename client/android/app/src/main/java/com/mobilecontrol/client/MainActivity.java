@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mobilecontrol.client.data.TouchData;
@@ -22,26 +21,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private long mLongClickTime = 400;
     private int mSpeed = 1;
     private MobileControlClient mControlClient;
-    private LinearLayout mConnectingSpinner;
-    private TextView mDisConnectedMsg;
+    private TextView mConnectionStatusView;
 
     private OnConnectListener mOnConnectListener = new OnConnectListener() {
 
         @Override
-        public void onConnectStateChanged(final boolean connected) {
-            Log.d(TAG, "onConnectStateChanged: "
-                    + (connected ? "connected" : "disconnected"));
+        public void onDisconnected(final boolean disconnectedByServer) {
+            Log.d(TAG, "onDisconnected" + (disconnectedByServer ? " by server" : ""));
             MainActivity.this.runOnUiThread(new Runnable() {
 
                 @Override
                 public void run() {
-                    mConnectingSpinner.setVisibility(View.GONE);
-                    mDisConnectedMsg.setVisibility(connected ? View.GONE
-                            : View.VISIBLE);
+                    mConnectionStatusView.setText(disconnectedByServer
+                            ? R.string.disconnected_by_server : R.string.disconnected);
                 }
             });
         }
 
+        @Override
+        public void onFindServerComplete(final boolean found) {
+            MainActivity.this.runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    mConnectionStatusView.setText(found ? R.string.connected : R.string.server_not_found);
+                }
+            });
+        }
     };
 
     @Override
@@ -60,49 +66,48 @@ public class MainActivity extends Activity implements View.OnClickListener {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    downX = lastX = event.getX();
-                    downY = lastY = event.getY();
-                    downTime = System.currentTimeMillis();
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    float x = event.getX();
-                    float y = event.getY();
-                    float dx = x - lastX;
-                    float dy = y - lastY;
-                    lastX = x;
-                    lastY = y;
+                    case MotionEvent.ACTION_DOWN:
+                        downX = lastX = event.getX();
+                        downY = lastY = event.getY();
+                        downTime = System.currentTimeMillis();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        float x = event.getX();
+                        float y = event.getY();
+                        float dx = x - lastX;
+                        float dy = y - lastY;
+                        lastX = x;
+                        lastY = y;
 
-                    TouchData td = new TouchData();
-                    td.setType(TouchData.TOUCH_TYPE_MOVE);
-                    td.setX(mSpeed * (int) dx);
-                    td.setY(mSpeed * (int) dy);
-                    send(td);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    x = event.getX();
-                    y = event.getY();
-                    dx = x - downX;
-                    dy = y - downY;
-                    if (dx < 2 && dy < 2) {
-                        // this is a click event
-                        TouchData td_c = new TouchData();
-                        long tx = System.currentTimeMillis() - downTime;
-                        Log.d(TAG, "tx " + tx);
-                        td_c.setType(tx > mLongClickTime ? TouchData.TOUCH_TYPE_LONG_CLICK
-                                : TouchData.TOUCH_TYPE_CLICK);
+                        TouchData td = new TouchData();
+                        td.setType(TouchData.TOUCH_TYPE_MOVE);
+                        td.setX(mSpeed * (int) dx);
+                        td.setY(mSpeed * (int) dy);
+                        send(td);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        x = event.getX();
+                        y = event.getY();
+                        dx = x - downX;
+                        dy = y - downY;
+                        if (dx < 2 && dy < 2) {
+                            // this is a click event
+                            TouchData td_c = new TouchData();
+                            long tx = System.currentTimeMillis() - downTime;
+                            Log.d(TAG, "tx " + tx);
+                            td_c.setType(tx > mLongClickTime ? TouchData.TOUCH_TYPE_LONG_CLICK
+                                    : TouchData.TOUCH_TYPE_CLICK);
 //                        td_c.setX((int) x);
 //                        td_c.setY((int) y);
-                        send(td_c);
-                    }
-                    break;
+                            send(td_c);
+                        }
+                        break;
                 }
                 return true;
             }
         });
 
-        mConnectingSpinner = (LinearLayout) findViewById(R.id.connecting_spinner);
-        mDisConnectedMsg = (TextView) findViewById(R.id.disconnected);
+        mConnectionStatusView = (TextView) findViewById(R.id.connection_status);
 
         MobileControlApp app = (MobileControlApp) getApplication();
         mControlClient = app.getMobileControlClient();
@@ -110,17 +115,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             mControlClient = new MobileControlClient();
             mControlClient.setOnConnectListener(mOnConnectListener);
             if (!mControlClient.isConnected()) {
-                mControlClient.connect();
+                mControlClient.findServer();
             }
 
             app.setMobileControlClient(mControlClient);
         }
 
-        mConnectingSpinner
-                .setVisibility(mControlClient.isConnected() ? View.GONE
-                        : View.VISIBLE);
-
-//        mConnectingSpinner.setVisibility(View.GONE);
     }
 
     @Override
@@ -133,15 +133,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case R.id.action_connect:
-            connect();
-            return true;
-        case R.id.action_send:
-            sendHello();
-            return true;
-        case R.id.action_disconnect:
-            disconnect();
-            return true;
+            case R.id.action_connect:
+                connect();
+                return true;
+            case R.id.action_send:
+                sendHello();
+                return true;
+            case R.id.action_disconnect:
+                disconnect();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -154,7 +154,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void connect() {
-        mControlClient.connect();
+        mControlClient.findServer();
     }
 
     private void disconnect() {
