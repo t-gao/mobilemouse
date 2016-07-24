@@ -1,5 +1,6 @@
 # mobilemouse
-Turn your android phone into a mouse touchpad for your pc
+Turn your android phone into a mouse touchpad for your pc.
+[中文](http://www.jianshu.com/p/ac0513b2b684)
 
 ## Introduction
 The purpose is to control the mouse cursor of a pc through a smart phone with a touch screen which is used as a touchpad for the pc. The pc and the phone are connected through a socket connection. they don't have to be connected to the internet, just need to be in the same LAN, which usually means they have to be connected to the same WIFI.
