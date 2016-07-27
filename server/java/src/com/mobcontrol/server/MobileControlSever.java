@@ -6,6 +6,7 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.BindException;
@@ -20,9 +21,16 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.Enumeration;
 
+import javax.swing.SwingUtilities;
+
+import com.google.zxing.WriterException;
+import com.mobcontrol.server.ui.UIFrame;
+
 public class MobileControlSever extends Thread {
 
     //TODO: connection status management
+
+    private Mode mMode = Mode.QR_SCAN;
 
     private static final String MULTI_CAST_ADDR = "228.5.6.7";
     private static final int LOCAL_UDP_PORT = 30000;
@@ -38,7 +46,13 @@ public class MobileControlSever extends Thread {
 
     private int mMouseX, mMouseY;
 
-    public MobileControlSever(int port) throws IOException {
+    private enum Mode {
+        DISCOVERY,
+        QR_SCAN
+    }
+
+    public MobileControlSever(Mode mode, int port) throws IOException {
+        mMode = mode;
         mServerSocket = new ServerSocket();
         try {
             mRobot = new Robot();
@@ -110,10 +124,14 @@ public class MobileControlSever extends Thread {
 
         updateCurrentMousePosition();
 
-        try {
-            waitForClientWave(MULTI_CAST_ADDR, LOCAL_UDP_PORT);
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        if (mMode == Mode.DISCOVERY) {
+            try {
+                waitForClientWave(MULTI_CAST_ADDR, LOCAL_UDP_PORT);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } else {
+            generateAndShowQRCode();
         }
 
         Socket server = null;
@@ -152,6 +170,28 @@ public class MobileControlSever extends Thread {
                 }
                 break;
             }
+        }
+    }
+
+    private void generateAndShowQRCode() {
+        try {
+            BufferedImage image = QRUtils.createQRImage(mIpAddr, 300);
+            if (image != null) {
+                SwingUtilities.invokeLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        UIFrame uiFrame = new UIFrame();
+                        uiFrame.showImage(image);
+                    }
+                });
+            }
+        } catch (WriterException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 
@@ -257,7 +297,7 @@ public class MobileControlSever extends Thread {
     public static void main(String[] args) {
         // int port = Integer.parseInt(args[0]);
         try {
-            Thread t = new MobileControlSever(LOCAL_TCP_PORT);
+            Thread t = new MobileControlSever(Mode.QR_SCAN, LOCAL_TCP_PORT);
             t.start();
         } catch (IOException e) {
             e.printStackTrace();
