@@ -1,6 +1,7 @@
 package com.mobilecontrol.client;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,14 +10,18 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobilecontrol.client.data.TouchData;
 import com.mobilecontrol.client.net.MobileControlClient;
 import com.mobilecontrol.client.net.MobileControlClient.OnConnectListener;
+import com.mobilecontrol.client.qrscan.QRScannerActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
     protected static final String TAG = "MainActivity";
+
+    private static final int REQ_CODE_SCAN = 100;
 
     private long mLongClickTime = 400;
     private int mSpeed = 1;
@@ -114,9 +119,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (mControlClient == null) {
             mControlClient = new MobileControlClient();
             mControlClient.setOnConnectListener(mOnConnectListener);
-            if (!mControlClient.isConnected()) {
-                mControlClient.findServer();
-            }
+//            if (!mControlClient.isConnected()) {
+//                mControlClient.findServer();
+//            }
 
             app.setMobileControlClient(mControlClient);
         }
@@ -124,8 +129,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (mControlClient.isConnected()) {
+            mConnectionStatusView.setText(R.string.connected);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -133,11 +145,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_connect:
-                connect();
+            case R.id.action_auto_discovery:
+                if (mControlClient.isConnected()) {
+                    Toast.makeText(this, R.string.already_connected, Toast.LENGTH_LONG).show();
+                } else {
+                    autoDiscoverServer();
+                }
                 return true;
-            case R.id.action_send:
-                sendHello();
+            case R.id.action_qr_scan:
+                if (mControlClient.isConnected()) {
+                    Toast.makeText(this, R.string.already_connected, Toast.LENGTH_LONG).show();
+                } else {
+                    startQRScan();
+                }
                 return true;
             case R.id.action_disconnect:
                 disconnect();
@@ -147,13 +167,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
+    private void startQRScan() {
+        mControlClient.onQRScanStart();
+        startActivityForResult(new Intent(this, QRScannerActivity.class), REQ_CODE_SCAN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQ_CODE_SCAN) {
+            if (resultCode == RESULT_OK) {
+                String result = null;
+                if (data != null) {
+                    result = data.getStringExtra(QRScannerActivity.QR_SCAN_RESULT);
+                }
+                mControlClient.onQRScanEnd(result);
+            } else {
+                mControlClient.onQRScanEnd(null);
+            }
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // mControlClient.disconnect();
     }
 
-    private void connect() {
+    private void autoDiscoverServer() {
         mControlClient.findServer();
     }
 

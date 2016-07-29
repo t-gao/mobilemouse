@@ -1,0 +1,54 @@
+[
+    {
+        "outputFile": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\res\\merged\\release\\values-v11\\values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 3,
+                    "endColumn": 10,
+                    "endOffset": 150
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\res\\values-v11\\zxing_themes.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 2,
+                        "startOffset": 55,
+                        "endLine": 3,
+                        "endColumn": 10,
+                        "endOffset": 151
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\res\\merged\\release\\values-v11\\values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 3,
+                    "endColumn": 10,
+                    "endOffset": 150
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\res\\values-v11\\zxing_themes.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 2,
+                        "startOffset": 55,
+                        "endLine": 3,
+                        "endColumn": 10,
+                        "endOffset": 151
+                    }
+                }
+            }
+        ]
+    }
+]

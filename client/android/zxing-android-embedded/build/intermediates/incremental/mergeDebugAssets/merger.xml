@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\MyJavaProjs\Git\mobilemouse\client\android\zxing-android-embedded\assets"/><source path="D:\MyJavaProjs\Git\mobilemouse\client\android\zxing-android-embedded\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\MyJavaProjs\Git\mobilemouse\client\android\zxing-android-embedded\src\debug\assets"/></dataSet></merger>

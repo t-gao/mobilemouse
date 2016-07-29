@@ -1,0 +1,164 @@
+[
+    {
+        "outputFile": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\res\\merged\\debug\\values-ar\\values-ar.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 61,
+                    "endOffset": 112
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 2,
+                        "startOffset": 649,
+                        "endColumn": 59,
+                        "endOffset": 706
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 117,
+                    "endColumn": 49,
+                    "endOffset": 162
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 2,
+                        "startOffset": 710,
+                        "endColumn": 47,
+                        "endOffset": 755
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 167,
+                    "endColumn": 132,
+                    "endOffset": 295
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 2,
+                        "startOffset": 759,
+                        "endColumn": 130,
+                        "endOffset": 887
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 300,
+                    "endColumn": 109,
+                    "endOffset": 405
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 2,
+                        "startOffset": 891,
+                        "endColumn": 107,
+                        "endOffset": 996
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\res\\merged\\debug\\values-ar\\values-ar.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 61,
+                    "endOffset": 112
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 2,
+                        "startOffset": 649,
+                        "endColumn": 59,
+                        "endOffset": 706
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 117,
+                    "endColumn": 49,
+                    "endOffset": 162
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 2,
+                        "startOffset": 710,
+                        "endColumn": 47,
+                        "endOffset": 755
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 167,
+                    "endColumn": 132,
+                    "endOffset": 295
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 2,
+                        "startOffset": 759,
+                        "endColumn": 130,
+                        "endOffset": 887
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 300,
+                    "endColumn": 109,
+                    "endOffset": 405
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\res-orig\\values-ar\\zxing_strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 2,
+                        "startOffset": 891,
+                        "endColumn": 107,
+                        "endOffset": 996
+                    }
+                }
+            }
+        ]
+    }
+]

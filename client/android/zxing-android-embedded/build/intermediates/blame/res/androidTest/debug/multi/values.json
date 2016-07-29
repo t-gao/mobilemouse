@@ -1,0 +1,852 @@
+[
+    {
+        "outputFile": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 71,
+                    "endOffset": 122
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 71,
+                        "endOffset": 122
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 127,
+                    "endColumn": 60,
+                    "endOffset": 183
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 127,
+                        "endColumn": 60,
+                        "endOffset": 183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 188,
+                    "endColumn": 63,
+                    "endOffset": 247
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 188,
+                        "endColumn": 63,
+                        "endOffset": 247
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 252,
+                    "endColumn": 64,
+                    "endOffset": 312
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 252,
+                        "endColumn": 64,
+                        "endOffset": 312
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 317,
+                    "endColumn": 64,
+                    "endOffset": 377
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 317,
+                        "endColumn": 64,
+                        "endOffset": 377
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 382,
+                    "endColumn": 53,
+                    "endOffset": 431
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 382,
+                        "endColumn": 53,
+                        "endOffset": 431
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 436,
+                    "endColumn": 53,
+                    "endOffset": 485
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 436,
+                        "endColumn": 53,
+                        "endOffset": 485
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 490,
+                    "endColumn": 53,
+                    "endOffset": 539
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 490,
+                        "endColumn": 53,
+                        "endOffset": 539
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 544,
+                    "endColumn": 58,
+                    "endOffset": 598
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 544,
+                        "endColumn": 58,
+                        "endOffset": 598
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 603,
+                    "endColumn": 57,
+                    "endOffset": 656
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 603,
+                        "endColumn": 57,
+                        "endOffset": 656
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1456,
+                    "endColumn": 46,
+                    "endOffset": 1498
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1456,
+                        "endColumn": 46,
+                        "endOffset": 1498
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1503,
+                    "endColumn": 47,
+                    "endOffset": 1546
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1503,
+                        "endColumn": 47,
+                        "endOffset": 1546
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1551,
+                    "endColumn": 41,
+                    "endOffset": 1588
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1551,
+                        "endColumn": 41,
+                        "endOffset": 1588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1593,
+                    "endColumn": 48,
+                    "endOffset": 1637
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1593,
+                        "endColumn": 48,
+                        "endOffset": 1637
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1642,
+                    "endColumn": 51,
+                    "endOffset": 1689
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1642,
+                        "endColumn": 51,
+                        "endOffset": 1689
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1694,
+                    "endColumn": 57,
+                    "endOffset": 1747
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1694,
+                        "endColumn": 57,
+                        "endOffset": 1747
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1752,
+                    "endColumn": 53,
+                    "endOffset": 1801
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1752,
+                        "endColumn": 53,
+                        "endOffset": 1801
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1806,
+                    "endColumn": 58,
+                    "endOffset": 1860
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1806,
+                        "endColumn": 58,
+                        "endOffset": 1860
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1865,
+                    "endColumn": 46,
+                    "endOffset": 1907
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1865,
+                        "endColumn": 46,
+                        "endOffset": 1907
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1912,
+                    "endColumn": 143,
+                    "endOffset": 2051
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1912,
+                        "endColumn": 143,
+                        "endOffset": 2051
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 2056,
+                    "endColumn": 112,
+                    "endOffset": 2164
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 2056,
+                        "endColumn": 112,
+                        "endOffset": 2164
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 2169,
+                    "endLine": 27,
+                    "endColumn": 10,
+                    "endOffset": 2264
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\mobilemouse\\client\\android\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 2169,
+                        "endLine": 27,
+                        "endColumn": 10,
+                        "endOffset": 2264
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 71,
+                    "endOffset": 122
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 71,
+                        "endOffset": 122
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 127,
+                    "endColumn": 60,
+                    "endOffset": 183
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 127,
+                        "endColumn": 60,
+                        "endOffset": 183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 188,
+                    "endColumn": 63,
+                    "endOffset": 247
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 188,
+                        "endColumn": 63,
+                        "endOffset": 247
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 252,
+                    "endColumn": 64,
+                    "endOffset": 312
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 252,
+                        "endColumn": 64,
+                        "endOffset": 312
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 317,
+                    "endColumn": 64,
+                    "endOffset": 377
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 317,
+                        "endColumn": 64,
+                        "endOffset": 377
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 382,
+                    "endColumn": 53,
+                    "endOffset": 431
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 382,
+                        "endColumn": 53,
+                        "endOffset": 431
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 436,
+                    "endColumn": 53,
+                    "endOffset": 485
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 436,
+                        "endColumn": 53,
+                        "endOffset": 485
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 490,
+                    "endColumn": 53,
+                    "endOffset": 539
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 490,
+                        "endColumn": 53,
+                        "endOffset": 539
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 544,
+                    "endColumn": 58,
+                    "endOffset": 598
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 544,
+                        "endColumn": 58,
+                        "endOffset": 598
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 603,
+                    "endColumn": 57,
+                    "endOffset": 656
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 603,
+                        "endColumn": 57,
+                        "endOffset": 656
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1456,
+                    "endColumn": 46,
+                    "endOffset": 1498
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1456,
+                        "endColumn": 46,
+                        "endOffset": 1498
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1503,
+                    "endColumn": 47,
+                    "endOffset": 1546
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1503,
+                        "endColumn": 47,
+                        "endOffset": 1546
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1551,
+                    "endColumn": 41,
+                    "endOffset": 1588
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1551,
+                        "endColumn": 41,
+                        "endOffset": 1588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1593,
+                    "endColumn": 48,
+                    "endOffset": 1637
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1593,
+                        "endColumn": 48,
+                        "endOffset": 1637
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1642,
+                    "endColumn": 51,
+                    "endOffset": 1689
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1642,
+                        "endColumn": 51,
+                        "endOffset": 1689
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1694,
+                    "endColumn": 57,
+                    "endOffset": 1747
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1694,
+                        "endColumn": 57,
+                        "endOffset": 1747
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1752,
+                    "endColumn": 53,
+                    "endOffset": 1801
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1752,
+                        "endColumn": 53,
+                        "endOffset": 1801
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1806,
+                    "endColumn": 58,
+                    "endOffset": 1860
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1806,
+                        "endColumn": 58,
+                        "endOffset": 1860
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1865,
+                    "endColumn": 46,
+                    "endOffset": 1907
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1865,
+                        "endColumn": 46,
+                        "endOffset": 1907
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1912,
+                    "endColumn": 143,
+                    "endOffset": 2051
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1912,
+                        "endColumn": 143,
+                        "endOffset": 2051
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 2056,
+                    "endColumn": 112,
+                    "endOffset": 2164
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 2056,
+                        "endColumn": 112,
+                        "endOffset": 2164
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 2169,
+                    "endLine": 27,
+                    "endColumn": 10,
+                    "endOffset": 2264
+                },
+                "from": {
+                    "file": "D:\\MyJavaProjs\\Git\\zxing-android-embedded\\zxing-android-embedded\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 2169,
+                        "endLine": 27,
+                        "endColumn": 10,
+                        "endOffset": 2264
+                    }
+                }
+            }
+        ]
+    }
+]

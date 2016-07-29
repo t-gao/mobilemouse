@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
     }
 }
 
@@ -12,4 +13,19 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+subprojects {
+    repositories {
+        jcenter()
+        mavenLocal()
+    }
+
+//    version = '3.3.0'
+//    group = 'com.journeyapps'
+//    apply plugin: 'android-sdk-manager'
+
+    ext.androidBuildTools = '23.0.2'
+    ext.androidTargetSdk = 23
+    ext.zxingCore = 'com.google.zxing:core:3.2.1'
 }

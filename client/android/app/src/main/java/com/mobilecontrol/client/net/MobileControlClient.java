@@ -42,6 +42,10 @@ public class MobileControlClient {
     }
 
     private void init() {
+        if (mConnectionStatus != DISCONNECTED) {
+            return;
+        }
+
         mNetworkThread = new NetworkThread("MobConClientNetThread");
         mNetworkThread.start();
         mNetThreadHandler = new Handler(mNetworkThread.getLooper()) {
@@ -52,6 +56,9 @@ public class MobileControlClient {
                 switch(msg.what) {
                     case NetworkThread.MSG_FIND_SERVER:
                         mNetworkThread.findServer();
+                        break;
+                    case NetworkThread.MSG_ON_QR_SCANNED:
+                        mNetworkThread.onQRScanEnd((String) msg.obj);
                         break;
                     case NetworkThread.MSG_SEND:
                         mNetworkThread.send((String)msg.obj);
@@ -96,6 +103,15 @@ public class MobileControlClient {
         mOnConnectListener = listener;
     }
 
+    public void onQRScanStart() {
+        init();
+        mConnectionStatus = CONNECTING;
+    }
+
+    public void onQRScanEnd(String serverIp) {
+        mNetThreadHandler.sendMessage(Message.obtain(mNetThreadHandler, NetworkThread.MSG_ON_QR_SCANNED, serverIp));
+    }
+
     public void findServer() {
         Log.d(TAG, "findServer");
         init();
@@ -131,7 +147,8 @@ public class MobileControlClient {
         private static final String TAG = "NetworkThread";
 
         public static final int MSG_FIND_SERVER = 0;
-        public static final int MSG_SEND = 1;
+        public static final int MSG_ON_QR_SCANNED = 1;
+        public static final int MSG_SEND = 2;
 
         private Socket mClientSoc;
         private String mServerIp;// = "172.17.106.55";
@@ -139,6 +156,17 @@ public class MobileControlClient {
 
         public NetworkThread(String name) {
             super(name);
+        }
+
+        public void onQRScanEnd(String serverIp) {
+            boolean found = !TextUtils.isEmpty(serverIp);
+            if (found) {
+                mServerIp = serverIp;
+                mConnectionStatus = CONNECTED;
+            } else {
+                quitAndMarkDisconnected();
+            }
+            mOnConnectListener.onFindServerComplete(found);
         }
 
         private void findServer() {
