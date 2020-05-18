@@ -1,31 +1,39 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
-        jcenter()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:3.3.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
     }
 }
 
 subprojects {
-    repositories {
-        jcenter()
-        mavenLocal()
-    }
+//    repositories {
+//        jcenter()
+//        mavenLocal()
+//    }
 
 //    version = '3.3.0'
 //    group = 'com.journeyapps'
 //    apply plugin: 'android-sdk-manager'
 
-    ext.androidBuildTools = '23.0.2'
-    ext.androidTargetSdk = 23
+    ext.androidBuildTools = '28.0.3'
+    ext.androidTargetSdk = 28
     ext.zxingCore = 'com.google.zxing:core:3.2.1'
 }

@@ -23,7 +23,7 @@ public class MobileControlClient {
     private static final int WAIT_FOR_WAVE_SO_TIMEOUT = 2000; // milliseconds
     private static final int WAIT_FOR_WAVE_BUFFER_SIZE = 1024; // bytes
 
-    private static final String MULTI_CAST_ADDR = "228.5.6.7";
+    private static final String MULTI_CAST_ADDR = "239.5.6.7";
     private static final int SERVER_UDP_PORT = 30000;//multicast send to
     private static final int SERVER_TCP_PORT = 27015;//control data send to
     private static final int LOCAL_UDP_PORT = 28960;//listen multicast here

@@ -32,7 +32,7 @@ public class MobileControlSever extends Thread {
 
     private Mode mMode = Mode.QR_SCAN;
 
-    private static final String MULTI_CAST_ADDR = "228.5.6.7";
+    private static final String MULTI_CAST_ADDR = "239.5.6.7";
     private static final int LOCAL_UDP_PORT = 30000;
     private static final int MCAST_CLIENT_PORT = 28960;
     private static final int LOCAL_TCP_PORT = 27015;// control data comes here
@@ -98,10 +98,14 @@ public class MobileControlSever extends Thread {
     }
 
     private void updateCurrentMousePosition() {
-        PointerInfo a = MouseInfo.getPointerInfo();
-        Point b = a.getLocation();
-        mMouseX = (int) b.getX();
-        mMouseY = (int) b.getY();
+        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        if (pointerInfo != null) {
+            Point p = pointerInfo.getLocation();
+            if (p != null) {
+                mMouseX = (int) p.getX();
+                mMouseY = (int) p.getY();
+            }
+        }
     }
 
     private void leftClick() {
@@ -297,7 +301,7 @@ public class MobileControlSever extends Thread {
     public static void main(String[] args) {
         // int port = Integer.parseInt(args[0]);
         try {
-            Thread t = new MobileControlSever(Mode.QR_SCAN, LOCAL_TCP_PORT);
+            Thread t = new MobileControlSever(Mode.DISCOVERY, LOCAL_TCP_PORT);
             t.start();
         } catch (IOException e) {
             e.printStackTrace();
